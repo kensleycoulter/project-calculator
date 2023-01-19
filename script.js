@@ -27,3 +27,25 @@ const divide = function(a,b) {
 }
 console.log(divide(1,900)); //.001
 
+
+
+const operate = function (num1, num2, operator) { 
+   const addOP =  '+';
+   const subtractOP = '-';
+   const multiplyOP = '*';
+   const divideOP = '/';
+
+    if(operator === addOP) {
+        return add(num1,num2);
+    } else if (operator === subtractOP){
+        return subtract(num1, num2);
+    } else if (operator === multiplyOP){
+        return multiply(num1, num2);
+    } else (operator === divideOP) 
+        return divide(num1, num2); 
+};
+
+console.log(operate(2,2,'+'));
+console.log(operate(2,2,'-'));
+console.log(operate(2,2,'*'));
+console.log(operate(2,2,'/'));
