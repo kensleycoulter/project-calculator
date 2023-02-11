@@ -4,24 +4,40 @@
     <meta charset="uft-8">
     <title>project calculator</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" src="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="calculator-container">
+        <div class="display">
+            <div class="previous-operand">9 + 1 =</div>
+            <div class="current-operand"> </div>
+        </div>
+            <div class="buttons">
+                <button data-all-clear class="btn" id="clearBtn">CLEAR</button>
+                <button data-delete class="btn" id="deleteBtn">DELETE</button>
+                <button data-number class="btn" id='test' value='7' onclick="updateDisplay(this)" >7</button>
+                <button data-number class="btn" id='test' value='8' onclick="updateDisplay(this)">8</button>
+                <button data-number class="btn" value='9' onclick="updateDisplay(this)">9</button>
+                <button data-operation class="btn" value='÷'>÷</button>
+                <button data-number class="btn" value='4' onclick="updateDisplay(this)">4</button>
+                <button data-number class="btn" value='5' onclick="updateDisplay(this)">5</button>
+                <button data-number class="btn" value='6' onclick="updateDisplay(this)">6</button>
+                <button data-operation class="btn" value='x'>x</button>
+                <button data-number class="btn" value='1' onclick="updateDisplay(this)">1</button>
+                <button data-number class="btn" value='2' onclick="updateDisplay(this)">2</button>
+                <button data-number class="btn" value='3' onclick="updateDisplay(this)">3</button>
+                <button data-operation class="btn" value='-'>-</button>
+                <button data-number class="btn" value='.' onclick="updateDisplay(this)">.</button>
+                <button data-number class="btn" value='0' onclick="updateDisplay(this)">0</button>
+                <button data-equals class="btn" value='='>=</button>
+                <button data-operation class="btn" value="+">+</button>
+            </div>
+
+ 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    </div>
 </body>
 
 
