@@ -1,6 +1,6 @@
 
 const add = function(a,b) {
-	sum = a + b;
+	sum = +a + +b;
     return Math.round(sum * 1000)/1000;
 };
 console.log(add(2.3459,.2)); //2.546
@@ -71,9 +71,10 @@ operationButtons.forEach((btn) =>
 
 
 const updateDisplay = function (numberButtons) {
-    //if (currentOperandDisplay.textContent === '0' || shouldResetScreen)
-    resetScreen()
-    currentOperandDisplay.textContent += numberButtons.value + ' ';
+    if (currentOperandDisplay.textContent === '0' || shouldResetScreen) {
+        resetScreen()
+    }
+    currentOperandDisplay.textContent += numberButtons.value;
     //console.log(firstOperand);
 } 
 
@@ -86,6 +87,8 @@ const setOperation = function (operator) {
     currentOperator = operator;
 
     previousOperandDisplay.textContent = `${firstOperand} ${currentOperator}`;
+    shouldResetScreen = true
+
     //console.log(firstOperand);
    // console.log(currentOperator);
 
@@ -94,7 +97,7 @@ const setOperation = function (operator) {
 const evaluate = function () {
     secondOperand = currentOperandDisplay.textContent;
     //console.log(secondOperand);
-    currentOperandDisplay.textContent = operate(firstOperand, secondOperand, '+');
+    currentOperandDisplay.textContent = operate(firstOperand, secondOperand, currentOperator);
     previousOperandDisplay.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`
     console.log(firstOperand);
     console.log(secondOperand);
@@ -113,56 +116,10 @@ const clear = function () {
 
 const resetScreen = function () {
     currentOperandDisplay.textContent = '';
-    //shouldResetScreen = false;
+    shouldResetScreen = false;
 }
 
-/* operationButtons.forEach((btn => { 
-    btn.addEventListener = 'click', () => {
-        console.log('mirrornball') 
-    }
-    console.log(btn)
-}))
- */
 
-//console.log(calculatorData);
-
-/* function checkData(){
-    previousOperandDisplay
-    .textContent = calculatorData;
-}
-
- 
-checkData();
- */
-//addDisplayValue();
-
-//document.querySelector('.btn').addEventListener('click', addDisplayValue);
-
-/* document.addEventListener('DOMContentLoaded', () => {
-    let buttons = document.querySelectorAll('.btn');
-    buttons.addEventListener('click', addDisplayValue); 
-})   */
-
-/* let buttons = document.querySelector('.btn');
-    buttons.addEventListener('click', populateDisplay);  */
-
-
-/*  const updateDisplayValue = () => {
-   // currentDisplay 
-    currentDisplay.textContent = displayValue; 
-}  */
-
-//updateDisplayValue();
-
-//console.log(addDisplayValue);
-
-//displayValue.populateDisplay(choice);
-
-//console.log(calculatorData);
-
-
-//operationButtons.addEventListener('click', operate);
-//operationButtons.addEventListener('click', console.log('pls work'));
 equalsButton.addEventListener('click', evaluate);
 allClearButton.addEventListener('click', clear);
 
