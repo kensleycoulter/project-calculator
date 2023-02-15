@@ -2,7 +2,6 @@
 let firstOperand;
 let secondOperand;
 let currentOperator;
-let nextOperator = null;
 let shouldResetScreen = false; 
 
 let previousOperandDisplay = document.querySelector('.previous-operand');
@@ -55,7 +54,6 @@ const evaluate = function () {
 
     secondOperand = currentOperandDisplay.textContent;
 
-
     //console.log(secondOperand);
     currentOperandDisplay.textContent = operate(firstOperand, secondOperand, currentOperator);
     previousOperandDisplay.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`
@@ -84,6 +82,9 @@ const resetScreen = function () {
     shouldResetScreen = false;
 }
 
+const deleteDigit = function () {
+    currentOperandDisplay.textContent = currentOperandDisplay.textContent.toString().slice(0,-1);
+}
 
 const add = function(a,b) {
 	sum = +a + +b;
@@ -136,4 +137,4 @@ console.log(operate(2,2,'÷'));
 
 equalsButton.addEventListener('click', evaluate);
 allClearButton.addEventListener('click', clear);
-
+deleteButton.addEventListener('click', deleteDigit);
