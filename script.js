@@ -47,10 +47,10 @@ const setOperation = function (operator) {
   
 const evaluate = function () {
     if(currentOperator === null || shouldResetScreen) return
-    if(currentOperator === '/' && currentOperandDisplay.textContent === '0'){
-    alert('you can\t divide by 0 loser')
-    return
-   }
+   /*  if(currentOperator === '÷' && currentOperandDisplay.textContent === '0'){
+        currentOperandDisplay.textContent = 'you can\t divide by 0 loser'
+    
+   } */
 
     secondOperand = currentOperandDisplay.textContent;
 
@@ -106,14 +106,13 @@ console.log(multiply(2.78459,1.74934)); //4.871
 
 const divide = function(a,b) {
    if(b === 0 ) {
-    return 'you can\'t divide by 0!';
+    return 'you can\'t divide by 0, nerd!';
    } else {
     quotient = a / b;
     return Math.round(quotient * 1000)/1000;
    } 
 }
 console.log(divide(1,900)); //.001
-
 
 
 const operate = function (a, b, operator) { 
@@ -124,9 +123,13 @@ const operate = function (a, b, operator) {
         return subtract(a, b);
     } else if (operator === 'x'){
         return multiply(a, b);
-    } else (operator === '÷')
+    } else if (operator === '÷') {
+        if (b === '0'){
+            return currentOperandDisplay.textContent = 'no'
+        } else {
         return divide(a, b); 
-};
+        }
+}};
 
 console.log(operate(7,0,'÷'))
 console.log(operate(2,2,'+'));
