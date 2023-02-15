@@ -20,6 +20,7 @@ body {
     border: 2px solid;
     border-radius: 15px;
     margin: 40px;
+    background-color: lightgray;
 }
 
 .display {
@@ -31,10 +32,12 @@ body {
     border-radius: 5px;
     margin: 20px;
     padding: 10px 20px;
+    background-color: white;
 }
 
 .previous-operand {
-    font-size: 24px;
+    font-size: 26px;
+    min-height: 30px;
 }
 
 .current-operand {
@@ -53,6 +56,7 @@ body {
 #clearBtn,
 #deleteBtn {
     grid-column: span 2;
+    background-color: rgb(255, 176, 30);
 }
 
 .btn {
