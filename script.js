@@ -1,13 +1,14 @@
-
 let firstOperand;
 let secondOperand;
 let currentOperator;
 let shouldResetScreen = false; 
+//let isDecimal = null;
 
 let previousOperandDisplay = document.querySelector('.previous-operand');
 let currentOperandDisplay = document.querySelector('.current-operand');
 
 const numberButtons = document.querySelectorAll('[data-number]');
+const decimalButton = document.querySelector('#decimalBtn')
 const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
 const deleteButton = document.querySelector('[data-delete]');
@@ -22,52 +23,52 @@ const updateDisplay = function (numberButtons) {
     if (currentOperandDisplay.textContent === '0' || shouldResetScreen) {
         resetScreen()
     }
-    currentOperandDisplay.textContent += numberButtons.value;
-    //console.log(firstOperand);
+   /*  } else if (!currentOperandDisplay.textContent.includes('.')) {
+        currentOperandDisplay.textContent += '.'
+        decimalButton.addEventListener('click', disableDecimal);
+    } else { */
+        currentOperandDisplay.textContent += numberButtons.value;
+};
+
+ /* const disableDecimal = function () {
+    decimalButton.disabled = true; 
+
 } 
+
+ const enableDecimal = function () {
+    decimalButton.disabled = false;
+ } */
 
 
 const setOperation = function (operator) {
     if(currentOperator != null) {
         evaluate();
     }
-
-   firstOperand = currentOperandDisplay.textContent
-    //operator = '+';
+    /* if(decimalButton.disabled = true){
+        decimalButton.addEventListener('click', enableDecimal);
+    } */
+    firstOperand = currentOperandDisplay.textContent
     currentOperator = operator;
-
     previousOperandDisplay.textContent = `${firstOperand} ${currentOperator}`;
     shouldResetScreen = true
-    
-
-    //console.log(firstOperand);
-   // console.log(currentOperator);
-
 }
   
 const evaluate = function () {
     if(currentOperator === null || shouldResetScreen) return
-   /*  if(currentOperator === '÷' && currentOperandDisplay.textContent === '0'){
-        currentOperandDisplay.textContent = 'you can\t divide by 0 loser'
-    
-   } */
-
+   
     secondOperand = currentOperandDisplay.textContent;
 
-    //console.log(secondOperand);
     currentOperandDisplay.textContent = operate(firstOperand, secondOperand, currentOperator);
     previousOperandDisplay.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`
-    console.log(firstOperand);
+    /* console.log(firstOperand);
     console.log(secondOperand);
     console.log(currentOperator);
 
     console.log(operate(7,0,'/'));
     console.log(operate(7,0,'÷'));
 
-    console.log(operate(firstOperand,secondOperand,currentOperator));
+    console.log(operate(firstOperand,secondOperand,currentOperator)); */
 }
-
-
 
 const clear = function () {
     currentOperandDisplay.textContent = 0;
@@ -90,19 +91,19 @@ const add = function(a,b) {
 	sum = +a + +b;
     return Math.round(sum * 1000)/1000;
 };
-console.log(add(2.3459,.2)); //2.546
+//console.log(add(2.3459,.2)); //2.546
 
 const subtract = function(a,b) {
 	difference = a - b;
     return Math.round(difference * 1000)/1000;
 };
-console.log(subtract(1,.0008)); //.999
+//console.log(subtract(1,.0008)); //.999
 
 const multiply = function(a,b) {
     product = a * b;
     return Math.round(product * 1000)/1000;
   };
-console.log(multiply(2.78459,1.74934)); //4.871
+//console.log(multiply(2.78459,1.74934)); //4.871
 
 const divide = function(a,b) {
    if(b === 0 ) {
@@ -112,7 +113,7 @@ const divide = function(a,b) {
     return Math.round(quotient * 1000)/1000;
    } 
 }
-console.log(divide(1,900)); //.001
+//console.log(divide(1,900)); //.001
 
 
 const operate = function (a, b, operator) { 
@@ -125,18 +126,18 @@ const operate = function (a, b, operator) {
         return multiply(a, b);
     } else if (operator === '÷') {
         if (b === '0'){
-            return currentOperandDisplay.textContent = 'no'
+            return currentOperandDisplay.textContent = 'u can\'t divide by 0, dork'
         } else {
         return divide(a, b); 
         }
 }};
 
-console.log(operate(7,0,'÷'))
+/* console.log(operate(7,0,'÷'))
 console.log(operate(2,2,'+'));
 console.log(operate(2,2,'-'));
 console.log(operate(2,2,'x'));
 console.log(operate(2,2,'÷'));
-
+ */
 
 equalsButton.addEventListener('click', evaluate);
 allClearButton.addEventListener('click', clear);
